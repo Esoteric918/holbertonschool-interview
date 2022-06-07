@@ -6,21 +6,14 @@ def  canUnlockAll(boxes):
     '''boxes that can be unlocked'''
     keyset = {0}
 
-    def boxOps(boxes, open = 0):
+    def boxOpener(opening=0):
         '''boxes that can be unlocked'''
-
-        for key in boxes[open]:
-            if key in keyset:
+        for key in boxes[opening]:
+            if not (0 <= key < len(boxes)) or key in keyset:
                 continue
             keyset.add(key)
-            if len(keyset) == len(boxes):
-                return True
-            else:
-                if set(boxes[key]).issubset(keyset):
-                    continue
-                return boxOps(boxes, key)
-        return False
+            boxOpener(key)
 
-    return boxOps(boxes)
-
-
+    boxOpener()
+    print(keyset)
+    return len(keyset) == len(boxes)
