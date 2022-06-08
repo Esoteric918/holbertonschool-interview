@@ -2,7 +2,7 @@
 '''Lockboxes'''
 
 
-def  canUnlockAll(boxes):
+def canUnlockAll(boxes):
     '''boxes that can be unlocked'''
     keyset = {0}
 
