@@ -16,4 +16,6 @@ def canUnlockAll(boxes):
 
     boxOpener()
     # print(keyset)
-    return len(keyset) == len(boxes)
+    if len(keyset) == len(boxes):
+        return True
+    return False
