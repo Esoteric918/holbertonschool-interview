@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 ''' In a text file, there is a single character H. Your text editor
     can execute only two operations in this file:
-    Copy All and Paste. Given a number n, write a method that calculates the fewest number of
+    Copy All and Paste. Given a number n, write a method that
+     calculates the fewest number of
     operations needed to result in exactly n H characters in the file.'''
 
 
@@ -14,7 +15,7 @@ def minOperations(n):
     factor = 2
     while n > 1:
         if n % factor == 0:
-            n= n //  factor
+            n = n // factor
             count += factor
         else:
             if n % factor:
