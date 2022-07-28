@@ -38,33 +38,27 @@ int is_palindrome(listint_t **head)
 	if (!(*head)->next || !(*head)->next->next)
 		return (1);
 
-	while (fast != NULL && fast->next != NULL)
+	while (fast && fast->next)
 	{
 		prev = slow;
 		slow = slow->next;
-		fast = fast->next->next;
+		next = fast->next->next;
+		fast = fast->next;
 	}
-
-	if (fast != NULL)
+	if (next)
 		slow = slow->next;
 	prev->next = NULL;
-	next = slow->next;
-	slow->next = NULL;
-
-	if (compare(slow, next))
+	prev = NULL;
+	next = NULL;
+	fast = *head;
+	while (slow)
 	{
-		free_listint(slow);
-		return (1);
-	}
-	if (fast != NULL)
 		next = slow->next;
-	else
-		next = NULL;
-	slow->next = NULL;
-	prev->next = NULL;
-	if (next != NULL)
-		*head = next;
-	else
-		*head = NULL;
-	return (compare(*head, prev));
+		slow->next = prev;
+		prev = slow;
+		slow = next;
+	}
+
+	*head = prev;
+	return (compare(*head, *head));
 }
