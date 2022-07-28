@@ -34,13 +34,15 @@ int is_palindrome(listint_t **head)
 
 	if (head == NULL || *head == NULL)
 		return (0);
-	if (!(*head)->next || !(*head)->next)
+	if (!(*head)->next || !(*head)->next->next)
 		return (1);
 
 	while (fast && fast->next)
 	{
+		prev = slow;
 		slow = slow->next;
 		next = fast->next->next;
+		fast = fast->next;
 	}
 	if (next)
 		slow = slow->next;
