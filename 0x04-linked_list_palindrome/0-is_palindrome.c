@@ -10,13 +10,13 @@
 
 int compare(listint_t *a, listint_t *b)
 {
-    if (a == NULL && b == NULL)
-        return (1);
-    if (a == NULL || b == NULL)
-        return (0);
-    if (a->n == b->n)
-        return (compare(a->next, b->next));
-    return (0);
+	if (a == NULL && b == NULL)
+		return (1);
+	if (a == NULL || b == NULL)
+		return (0);
+	if (a->n == b->n)
+		return (compare(a->next, b->next));
+	return (0);
 }
 
 /**
@@ -27,28 +27,28 @@ int compare(listint_t *a, listint_t *b)
  */
 int is_palindrome(listint_t **head)
 {
-    listint_t *slow = *head;
-    listint_t *fast = *head;
-    listint_t *prev = NULL;
-    listint_t *next = NULL;
+	listint_t *slow = *head;
+	listint_t *fast = *head;
+	listint_t *prev = NULL;
+	listint_t *next = NULL;
 
-    if (head == NULL || *head == NULL)
-        return (1);
-    while (fast != NULL && fast->next != NULL)
-    {
-        prev = slow;
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-    if (fast != NULL)
-        next = slow->next;
-    else
-        next = NULL;
-    slow->next = NULL;
-    prev->next = NULL;
-    if (next != NULL)
-        *head = next;
-    else
-        *head = NULL;
-    return (compare(*head, prev));
+	if (head == NULL || *head == NULL)
+		return (1);
+	while (fast != NULL && fast->next != NULL)
+	{
+		prev = slow;
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+	if (fast != NULL)
+		next = slow->next;
+	else
+		next = NULL;
+	slow->next = NULL;
+	prev->next = NULL;
+	if (next != NULL)
+		*head = next;
+	else
+		*head = NULL;
+	return (compare(*head, prev));
 }
