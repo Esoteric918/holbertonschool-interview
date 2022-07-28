@@ -5,9 +5,8 @@
  *
  * @a - first node
  * @b - second node
- * Return int
+ * Return: int
  */
-
 int compare(listint_t *a, listint_t *b)
 {
 	if (a == NULL && b == NULL)
@@ -35,15 +34,13 @@ int is_palindrome(listint_t **head)
 
 	if (head == NULL || *head == NULL)
 		return (0);
-	if (!(*head)->next || !(*head)->next->next)
+	if (!(*head)->next || !(*head)->next)
 		return (1);
 
 	while (fast && fast->next)
 	{
-		prev = slow;
 		slow = slow->next;
 		next = fast->next->next;
-		fast = fast->next;
 	}
 	if (next)
 		slow = slow->next;
