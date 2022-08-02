@@ -1,4 +1,4 @@
-#ifdef IS_PALINDROME
+#ifndef IS_PALINDROME
 #define IS_PALINDROME
 
 #include <stdio.h>
