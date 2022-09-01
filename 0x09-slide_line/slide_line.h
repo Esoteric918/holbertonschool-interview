@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stddef.h>
+#include <limits.h>
 #define SLIDE_LEFT 0
 #define SLIDE_RIGHT 1
 

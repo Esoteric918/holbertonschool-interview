@@ -52,18 +52,18 @@ void mergeLeft(int * line, size_t size)
 */
 void slideRight(int * line, size_t size)
 {
-	size_t i, j, temp;
+	size_t i , j, temp;
 
-	for (i = size - 1; i > 0; i--)
+	for (i = size; i < ULLONG_MAX; i--)
 	{
-		if (line[i] == 0)
+		if (line[i - 1] == 0)
 		{
-			for (j = i; j > 0; j--)
+			for (j = i - 1; j < ULLONG_MAX; j--)
 			{
 				if (line[j] != 0)
 				{
-					temp = line[i];
-					line[i] = line[j];
+					temp = line[i - 1];
+					line[i - 1] = line[j];
 					line[j] = temp;
 					break;
 				}
