@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+'''Create a function to sort and count coin'''
+
 
 def makeChange(coins, total):
+    '''Function to sort and count coin'''
     count = 0
     coins.sort(reverse=True)
     for coin in coins:
