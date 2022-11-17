@@ -9,6 +9,4 @@ def makeChange(coins, total):
     for coin in coins:
         count += total // coin
         total %= coin
-    if coin == 0:
-        return count
     return -1 if total else count
