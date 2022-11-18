@@ -6,11 +6,17 @@ def makeChange(coins, total):
     '''Function to sort and count coin'''
     if total <= 0:
         return 0
-    count = 0
+    coinlist = [0] * len(coins)
 
     coins.sort(reverse=True)
 
     for coin in coins:
-        count += total // coin
-        total %= coin
-    return -1 if total else count
+        for i in range( coin, total + 1, coin):
+            coinlist[coins.index(coin)] += 1
+            total -= coin
+            if total == 0:
+                return sum(coinlist)
+
+    return -1
+
+    # return -1 if total else count
