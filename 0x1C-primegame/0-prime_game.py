@@ -4,24 +4,28 @@
 
 def isWinner(x, nums):
     """Function that determines if a player is the winner"""
-    if x <= 0 or not nums:
+    if not nums or x < 1:
         return None
     n = max(nums)
     primes = [True for i in range(n + 1)]
-    p = 2
-    while p * p <= n:
-        if primes[p]:
-            for i in range(p * 2, n + 1, p):
-                primes[i] = False
-        p += 1
     primes[0] = False
     primes[1] = False
+    for i in range(2, int(n ** 0.5) + 1):
+        if primes[i]:
+            for j in range(i * i, n + 1, i):
+                primes[j] = False
     count = 0
-    for i in range(x):
-        if primes[nums[i]]:
+    for i in range(n + 1):
+        if primes[i]:
             count += 1
-    if count * 2 == x:
+        primes[i] = count
+    player1 = 0
+    for n in nums:
+        if primes[n] % 2 == 1:
+            player1 += 1
+    if player1 * 2 == len(nums):
         return None
-    if count * 2 > x:
+    elif player1 * 2 > len(nums):
         return "Maria"
-    return "Ben"
+    else:
+        return "Ben"
