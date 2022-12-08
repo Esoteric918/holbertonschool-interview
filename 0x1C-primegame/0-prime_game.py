@@ -4,6 +4,7 @@
 
 def isWinner(x, nums):
     """Function that determines if a player is the winner"""
+    # set up the prime numbers for the game
     if not nums or x < 1:
         return None
     n = max(nums)
@@ -14,18 +15,20 @@ def isWinner(x, nums):
         if primes[i]:
             for j in range(i * i, n + 1, i):
                 primes[j] = False
+    # set start point of game
     count = 0
     for i in range(n + 1):
         if primes[i]:
             count += 1
         primes[i] = count
-    player1 = 0
+    # determine winner if not Maria then Ben
+    Maria = 0
     for n in nums:
         if primes[n] % 2 == 1:
-            player1 += 1
-    if player1 * 2 == len(nums):
+            Maria += 1
+    if Maria * 2 == len(nums):
         return None
-    elif player1 * 2 > len(nums):
+    elif Maria * 2 > len(nums):
         return "Maria"
     else:
         return "Ben"
