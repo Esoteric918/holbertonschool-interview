@@ -1,32 +1,27 @@
 #!/usr/bin/python3
 """Prime Game Module"""
-import random
-import math
+
 
 def isWinner(x, nums):
     """Function that determines if a player is the winner"""
-    if not nums or x < 1:
+    if x <= 0 or not nums:
         return None
     n = max(nums)
     primes = [True for i in range(n + 1)]
+    p = 2
+    while p * p <= n:
+        if primes[p]:
+            for i in range(p * 2, n + 1, p):
+                primes[i] = False
+        p += 1
     primes[0] = False
     primes[1] = False
-    for i in range(2, int(math.sqrt(n)) + 1):
-        if primes[i]:
-            for j in range(i * i, n + 1, i):
-                primes[j] = False
     count = 0
-    for i in range(1, n + 1):
-        if primes[i]:
+    for i in range(x):
+        if primes[nums[i]]:
             count += 1
-        primes[i] = count
-    player1 = 0
-    for i in nums:
-        if primes[i] % 2 == 1:
-            player1 += 1
-    if player1 * 2 == len(nums):
+    if count * 2 == x:
         return None
-    elif player1 * 2 > len(nums):
+    if count * 2 > x:
         return "Maria"
-    else:
-        return "Ben"
+    return "Ben"
